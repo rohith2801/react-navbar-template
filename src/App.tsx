@@ -1,10 +1,19 @@
 import React from 'react';
-import CustomRoute from './routes';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import theme from './templates/Theme';
 import './App.css';
+import Layout from './templates/Layout';
 
 function App() {
   return (
-    <><CustomRoute /></>
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Layout />
+      </ThemeProvider>
+    </>
   );
 }
 
