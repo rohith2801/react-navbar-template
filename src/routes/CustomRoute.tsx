@@ -8,6 +8,7 @@ import BrandingWatermarkIcon from '@material-ui/icons/BrandingWatermark';
 
 import ViewAll from '../components/catalog/ViewAll';
 import Download from '../components/generate/Index';
+import NotFound from '../components/404/Index';
 
 export const Routes = [
     {
@@ -32,6 +33,7 @@ const CustomRoute = () => {
                     <route.component />
                 </Route>
             ))}
+            <Route path="*" component={NotFound} />
         </Switch>
     );
 };
