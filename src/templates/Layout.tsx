@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { Redirect } from 'react-router-dom';
 
 import Header from './Header';
 import SideMenu from './SideMenu';
 import CustomRoute from '../routes/CustomRoute';
-
-import { withRouter } from 'react-router-dom';
+import { isAuthenticated } from '../util/auth.util';
 
 const drawerWidth = 240;
 
@@ -14,23 +14,27 @@ const Layout = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
 
+    console.warn("I am layout");
+
     return <>
-        <div style={{ display: 'flex' }}>
-            <Header onMenuClick={setOpen} isOpen={open} drawerWidth={drawerWidth} />
-            <SideMenu onMenuClick={setOpen} isOpen={open} drawerWidth={drawerWidth} />
-            <main
-                className={clsx(classes.content, {
-                    [classes.contentShift]: open,
-                })}
-            >
-                <div className={classes.toolbar} />
-                <CustomRoute />
-            </main>
-        </div>
+        {!isAuthenticated() ? <Redirect to="login" /> :
+            <div style={{ display: 'flex' }}>
+                <Header onMenuClick={setOpen} isOpen={open} drawerWidth={drawerWidth} />
+                <SideMenu onMenuClick={setOpen} isOpen={open} drawerWidth={drawerWidth} />
+                <main
+                    className={clsx(classes.content, {
+                        [classes.contentShift]: open,
+                    })}
+                >
+                    <div className={classes.toolbar} />
+                    <CustomRoute />
+                </main>
+            </div>
+        }
     </>;
 };
 
-export default withRouter(Layout);
+export default Layout;
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

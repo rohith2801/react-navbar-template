@@ -1,18 +1,27 @@
 import React from 'react';
+import { withRouter, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-const Login = () => {
+import { isAuthenticated } from './../../util/auth.util';
+
+const Login = (props: any) => {
 
     const onLogin = () => {
         localStorage.setItem("isUserLoggedIn", "true");
-        window.location.href = "download";
+        props.history.push('/');
     };
 
+    console.warn(isAuthenticated())
+
     return (
-        <div>
-            <Button onClick={onLogin}>Login</Button>
-        </div>
+        <>
+            {isAuthenticated() ? <Redirect to="/" /> :
+                <div>
+                    <Button onClick={onLogin}>Login</Button>
+                </div>
+            }
+        </>
     )
 };
 
-export default Login;
+export default withRouter(Login);

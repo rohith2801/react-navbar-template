@@ -32,7 +32,7 @@ const Header = ({ isOpen, onMenuClick, drawerWidth }: any) => {
                 <Typography variant="h6" className={classes.title}>
                     Device Catalog System
                 </Typography>
-                <Button color="inherit">Login</Button>
+                <Button color="inherit">Logout</Button>
             </Toolbar>
         </AppBar>
     </>;
