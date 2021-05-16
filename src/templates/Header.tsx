@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { withRouter } from 'react-router-dom';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,12 +9,19 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const Header = ({ isOpen, onMenuClick, drawerWidth }: any) => {
+import { removeAuthentication } from '../util/auth.util';
+
+const Header = ({ isOpen, onMenuClick, drawerWidth, history }: any) => {
+    const classes = useStyles(drawerWidth);
     const handleDrawerOpen = () => {
         onMenuClick(true);
     };
 
-    const classes = useStyles(drawerWidth);
+    const logout = () => {
+        removeAuthentication();
+        history.push("/login");
+    };
+
     return <>
         <AppBar position="fixed" className={clsx(classes.appBar, {
             [classes.appBarShift]: isOpen,
@@ -32,13 +40,13 @@ const Header = ({ isOpen, onMenuClick, drawerWidth }: any) => {
                 <Typography variant="h6" className={classes.title}>
                     Device Catalog System
                 </Typography>
-                <Button color="inherit">Logout</Button>
+                <Button color="inherit" onClick={logout}>Logout</Button>
             </Toolbar>
         </AppBar>
     </>;
 };
 
-export default Header;
+export default withRouter(Header);
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {

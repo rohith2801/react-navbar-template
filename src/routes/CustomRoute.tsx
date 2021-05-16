@@ -1,27 +1,41 @@
 import React from 'react';
-import {
-    Switch,
-    Route,
-} from 'react-router-dom';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import BrandingWatermarkIcon from '@material-ui/icons/BrandingWatermark';
+import { Switch, Route } from 'react-router-dom';
 
-import ViewAll from '../components/catalog/ViewAll';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import BackupIcon from '@material-ui/icons/Backup';
+
+import CatalogViewAll from '../components/catalog/ViewAll';
 import Download from '../components/generate/Index';
+import UserView from '../components/user';
+import Backup from '../components/backup/Index';
 import NotFound from '../components/404/Index';
 
 export const Routes = [
     {
         path: '/',
         sidebarName: 'Catalog',
-        component: ViewAll,
-        iconComponent: BrandingWatermarkIcon,
+        component: CatalogViewAll,
+        iconComponent: ViewListIcon,
     },
     {
         path: '/download',
-        sidebarName: 'Generate',
+        sidebarName: 'Template',
         component: Download,
         iconComponent: InboxIcon,
+    },
+    {
+        path: '/user',
+        sidebarName: 'User',
+        component: UserView,
+        iconComponent: PeopleAltIcon,
+    },
+    {
+        path: '/backup',
+        sidebarName: 'Back Up',
+        component: Backup,
+        iconComponent: BackupIcon,
     },
 ];
 
