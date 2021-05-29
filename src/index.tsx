@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -8,11 +8,15 @@ import {
   HashRouter as Router,
 } from 'react-router-dom';
 
+import "./i18n";
+
 ReactDOM.render(
   <React.StrictMode>
+    <Suspense fallback="Loading.. Please wait..">
     <Router>
       <App />
     </Router>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );

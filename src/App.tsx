@@ -12,8 +12,10 @@ import './App.css';
 import Layout from './templates/Layout';
 import Login from './components/login/Login';
 import store from './store';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  useTranslation(['common']);
   return (
     <>
       <Provider store={store}>

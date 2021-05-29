@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 import { isAuthenticated } from './../../util/auth.util';
 import { Grid, makeStyles, Paper, TextField, Theme, Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const Login = (props: any) => {
     const classes = useStyles();
@@ -12,6 +13,8 @@ const Login = (props: any) => {
         localStorage.setItem("isUserLoggedIn", "true");
         props.history.push('/');
     };
+
+    const {t} = useTranslation('common');
 
     return (
         <>
@@ -27,12 +30,12 @@ const Login = (props: any) => {
                     justify="center"
                     ><Paper>
                          <Grid item className={classes.formGrid} >
-                           <Typography align="center" component="h5" variant="h5"> Login </Typography>
+                           <Typography align="center" component="h5" variant="h5"> {t("loginPageTitle")} </Typography>
                         </Grid>
                         <Grid item className={classes.formGrid} >
                             <TextField 
                                 id="emailid" 
-                                label="Email address" 
+                                label={t('emailAddress')}
                                 variant="outlined"
                                 fullWidth
                                 />
@@ -40,7 +43,7 @@ const Login = (props: any) => {
                         <Grid item  className={classes.formGrid}>
                             <TextField 
                                 id="password"
-                                label="Password" 
+                                label={t('password')}
                                 variant="outlined"
                                 fullWidth
                                 />
@@ -55,7 +58,7 @@ const Login = (props: any) => {
                             variant="contained" 
                             onClick={onLogin}
                             fullWidth
-                            >Login</Button>
+                            >{t('login')}</Button>
                             </Grid>
                         </Grid>
                         </Paper>
