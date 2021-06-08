@@ -13,10 +13,15 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
     "@types/react-redux": "^7.1.16",
+    "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "env-cmd": "^10.1.0",
+    "husky": "^6.0.0",
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
     "i18next-http-backend": "^1.2.6",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
     "react": "^17.0.2",
     "react-dnd": "^14.0.2",
     "react-dom": "^17.0.2",
@@ -33,7 +38,19 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:staging": " GENERATE_SOURCEMAP=false env-cmd -f .env.staging react-scripts build",
+    "build:development": "GENERATE_SOURCEMAP=false env-cmd -f .env.development react-scripts build"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -55,6 +72,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
+    "cross-env": "^7.0.3",
     "redux-devtools-extension": "^2.13.9"
   }
 }

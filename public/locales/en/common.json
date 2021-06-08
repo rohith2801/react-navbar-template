@@ -1,4 +1,6 @@
 {
     "login":"Login",
-    "loginPageTitle":"Login"
+    "loginPageTitle":"Login",
+    "emailAddress":"Email Address",
+    "password":"Password"
 }

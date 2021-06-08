@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const ViewAll = () => {
-    return (
-        <>
-            View all
-        </>
-    )
+  return <>View all</>;
 };
 
 export default ViewAll;
