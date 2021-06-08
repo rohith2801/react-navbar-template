@@ -6,7 +6,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import BackupIcon from "@material-ui/icons/Backup";
 
-import CatalogViewAll from "../components/catalog/ViewAll";
+import Catalog from "../components/catalog";
 import Download from "../components/generate/Index";
 import UserView from "../components/user";
 import Backup from "../components/backup/Index";
@@ -16,7 +16,7 @@ export const Routes = [
   {
     path: "/",
     sidebarName: "Catalog",
-    component: CatalogViewAll,
+    component: Catalog,
     iconComponent: ViewListIcon,
   },
   {

@@ -7,6 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 import { HashRouter as Router } from "react-router-dom";
 
 import "./i18n";
+import { setupServer } from "./api/mock";
+
+if(process.env.NODE_ENV === 'development') {
+  setupServer();
+}
 
 ReactDOM.render(
   <React.StrictMode>

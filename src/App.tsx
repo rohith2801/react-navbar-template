@@ -10,19 +10,31 @@ import Layout from "./templates/Layout";
 import Login from "./components/login/Login";
 import store from "./store";
 import { useTranslation } from "react-i18next";
+import Progress from "./common/Progress";
+import AlertBox from "./common/AlertBox";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import ConfirmPopup from './common/AssertionPopup';
+import DialogBox from'./common/DialogBox';
+const queryClient = new QueryClient();
 
 function App() {
   useTranslation(["common"]);
   return (
     <>
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Switch>
-            <Route path="/login" key="/login" component={Login}></Route>
-            <Route path="/" key="/" component={Layout}></Route>
-          </Switch>
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Progress />
+            <ConfirmPopup/>
+            <DialogBox/>
+            <AlertBox />
+            <Switch>
+              <Route path="/login" key="/login" component={Login}></Route>
+              <Route path="/" key="/" component={Layout}></Route>
+            </Switch>
+          </ThemeProvider>
+        </QueryClientProvider>
       </Provider>
     </>
   );
